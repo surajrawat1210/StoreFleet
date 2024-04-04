@@ -1,0 +1,865 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "description": "CRUD operations for Product Management",
+      "title": "Product API"
+    },
+    "host": "localhost:3000",
+    "securityDefinitions": {
+      "JWT": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "paths": {
+        "/api/storefleet/product/products?page={pageId}&keyword={keyword}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all products",
+                "description": "User will get all products",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "pageId",
+                        "in": "path",
+                        "description": "Page No.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "keyword",
+                        "in": "path",
+                        "description": "Search Value",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/product/add": {
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Add a new product",
+                "description": "Add a new product to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "category": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "name": "kela",
+                                "description": "yellow balanana",
+                                "price": 120,
+                                "category": "Mobile"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/product/update/{productId}": {
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Add a new product",
+                "description": "Add a new product to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Product Id",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "category": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "name": "kela",
+                                "description": "yellow balanana",
+                                "price": 120,
+                                "category": "Mobile"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/product/delete/{productId}": {
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete a  product",
+                "description": "Delete product to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Product Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/product/details/{productId}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all products",
+                "description": "User will get all products",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "Product No.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/product/rate/{productId}": {
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all products",
+                "description": "User will get all products",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "Product No.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Rating",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "rating": {
+                                    "type": "integer"
+                                },
+                                "comment": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "rating": 3,
+                                "comment": "woowww!!"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/product/reviews/{productId}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get all products",
+                "description": "User will get all products",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "Product No.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/product/delete/review?productId={productId}&reviewId={reviewId}": {
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete a  product",
+                "description": "Delete product to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Product Id",
+                        "required": true
+                    },
+                    {
+                        "name": "reviewId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "review Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/signup": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Add a new User",
+                "description": "Add a new User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "name":"vivek",
+                                "email":"surajrawat14953@gmail.com",
+                                "password":"vivek28@"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/activationLink/{{activationId}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Activate User",
+                "description": "Activate User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "activationId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "activation Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        
+        "/api/storefleet/user/login": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Login a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Login User",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "name":"vivek",
+                                "email":"surajrawat14953@gmail.com",
+                                "password":"vivek28@"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/logout": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Login a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/password/forget": {
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Add a new product",
+                "description": "Add a new product to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                              "email":"surajrawat14953@gmail.com"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/reset/{resetId}?email={email}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Login a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "resetId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "reset Id",
+                        "required": true
+                    },
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "type": "string",
+                        "description": "email Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/password/reset/{resetId}": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Reset password  a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "resetId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "reset Id",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "confirmPassword": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "email":"surajrawat09859@gmail.com",
+                                "password":"swati18@",
+                                "confirmPassword":"swati18@"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/password/update": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Reset password  a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "currentPassword": {
+                                    "type": "string"
+                                },
+                                "newPassword": {
+                                    "type": "string"
+                                },
+                                "confirmPassword": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "currentPassword":"swati18@",
+                                "newPassword":"vivek28@",
+                                "confirmPassword":"vivek28@"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/profile/update": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Reset password  a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Product object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "name":"pintu",
+                                "email":"admin@storefleet.com"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/user/details": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Reset password  a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/storefleet/order/new": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Reset password  a  User",
+                "description": "Login a User to the system",
+                "security": [
+                    {
+                        "JWT": []
+                    }
+                ],
+                "parameters":[
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Order details",
+                        "required": true,
+                        "schema": {
+                          "type": "object",
+                          "properties": {
+                            "shippingInfo": {
+                              "type": "object",
+                              "properties": {
+                                "address": {
+                                  "type": "string"
+                                },
+                                "city": {
+                                  "type": "string"
+                                },
+                                "state": {
+                                  "type": "string"
+                                },
+                                "country": {
+                                  "type": "string"
+                                },
+                                "pincode": {
+                                  "type": "integer"
+                                },
+                                "phoneNumber": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "orderedItems": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "product": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "image": {
+                                    "type": "string"
+                                  },
+                                  "quantity": {
+                                    "type": "integer"
+                                  }
+                                }
+                              }
+                            },
+                            "user": {
+                              "type": "string"
+                            },
+                            "paymentInfo": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "status": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            "paidAt": {
+                              "type": "string"
+                            },
+                            "itemsPrice": {
+                              "type": "number"
+                            },
+                            "taxPrice": {
+                              "type": "number"
+                            },
+                            "shippingPrice": {
+                              "type": "number"
+                            },
+                            "totalPrice": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+        }
+    
+}
