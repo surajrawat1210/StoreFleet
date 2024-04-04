@@ -5,7 +5,7 @@
       "description": "CRUD operations for Product Management",
       "title": "Product API"
     },
-    "host": "localhost:3000",
+    "host": "https://storefleet.onrender.com",
     "securityDefinitions": {
       "JWT": {
         "type": "apiKey",
