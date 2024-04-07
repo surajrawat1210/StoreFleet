@@ -19,6 +19,7 @@ jobs:
       - run: npm test
       - run: node --version
       - run: npm --version
+      - run: npm install
       - run: node backend/server
 
   publish-npm:
