@@ -3,35 +3,18 @@
 
 name: Node.js Package
 
-on:
-  release:
-    types: [created]
-
+on: push
 jobs:
-  build:
+  build-node:
     runs-on: ubuntu-latest
+    container: node 16
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm ci
-      - run: npm test
       - run: node --version
       - run: npm --version
       - run: npm install
-      - run: node backend/server
+      - run: node backend/server.js
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
