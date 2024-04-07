@@ -12,5 +12,5 @@ jobs:
       - run: node --version
       - run: npm --version
       - run: npm install
-      - run: node backend/server.js
+    
 
