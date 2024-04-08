@@ -7,7 +7,6 @@ on:
     branches:
       - master
 jobs:
-
   build-node:
     runs-on: ubuntu-latest
     container: node:16
